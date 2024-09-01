@@ -29,6 +29,17 @@ class Library:
         book.is_borrowed = False
         print(f"Thank you for returning '{book.title}'.")
     
+    
+    def view_available_books(self):
+        available_books = [book for book in self.books.values() if not book.is_borrowed]
+        if available_books:
+            print("Available books:")
+            for book in available_books:
+                print(book)
+        else:
+            print("No books are currently available.")
+        return available_books
+
 def main():
     library = Library()
 
