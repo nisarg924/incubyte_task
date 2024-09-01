@@ -9,6 +9,8 @@ class Book:
     def __str__(self):
         return f"ISBN: {self.isbn}, Title: {self.title}, Author: {self.author}, Year: {self.publication_year}, Borrowed: {self.is_borrowed}"
 
+# Errors
+
 class BookExistsError(Exception):
     pass
 

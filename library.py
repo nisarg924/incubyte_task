@@ -4,12 +4,16 @@ from book import Book, BookAlreadyBorrowedError, BookExistsError, BookNotBorrowe
 class Library:
     def __init__(self):
         self.books = {}
-        
+    
+    #add book feature
+    
     def add_book(self, book):
         if book.isbn in self.books:
             raise BookExistsError(f"Book with ISBN {book.isbn} already exists.")
         self.books[book.isbn] = book
         print(f"Book '{book.title}' added successfully.")
+    
+    #borrow book feature
     
     def borrow_book(self, isbn):
         if isbn not in self.books:
@@ -20,6 +24,8 @@ class Library:
         book.is_borrowed = True
         print(f"You have successfully borrowed '{book.title}'.")
     
+    #return book feature
+    
     def return_book(self, isbn):
         if isbn not in self.books:
             raise BookNotFoundError(f"No book found with ISBN {isbn}.")
@@ -29,7 +35,7 @@ class Library:
         book.is_borrowed = False
         print(f"Thank you for returning '{book.title}'.")
     
-    
+    #view availble book feature
     def view_available_books(self):
         available_books = [book for book in self.books.values() if not book.is_borrowed]
         if available_books:
@@ -42,6 +48,8 @@ class Library:
 
 def main():
     library = Library()
+    
+    #for user input
     
     while True:
         print("\nLibrary Management System")
