@@ -1,4 +1,4 @@
-from book import BookAlreadyBorrowedError, BookExistsError, BookNotFoundError
+from book import BookAlreadyBorrowedError, BookExistsError, BookNotBorrowedError, BookNotFoundError
 
 
 class Library:
@@ -19,6 +19,15 @@ class Library:
             raise BookAlreadyBorrowedError(f"The book '{book.title}' is already borrowed.")
         book.is_borrowed = True
         print(f"You have successfully borrowed '{book.title}'.")
+    
+    def return_book(self, isbn):
+        if isbn not in self.books:
+            raise BookNotFoundError(f"No book found with ISBN {isbn}.")
+        book = self.books[isbn]
+        if not book.is_borrowed:
+            raise BookNotBorrowedError(f"The book '{book.title}' was not borrowed.")
+        book.is_borrowed = False
+        print(f"Thank you for returning '{book.title}'.")
     
 def main():
     library = Library()
