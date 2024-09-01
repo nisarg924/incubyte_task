@@ -1,4 +1,3 @@
-"# Library Management System"
 # Library Management System
 
 A simple Library Management System implemented in Python, allowing users to add books, borrow books, return books, and view available books.
