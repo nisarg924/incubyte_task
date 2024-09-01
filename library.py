@@ -1,4 +1,4 @@
-from book import BookAlreadyBorrowedError, BookExistsError, BookNotBorrowedError, BookNotFoundError
+from book import Book, BookAlreadyBorrowedError, BookExistsError, BookNotBorrowedError, BookNotFoundError
 
 
 class Library:
@@ -42,6 +42,55 @@ class Library:
 
 def main():
     library = Library()
+    
+    while True:
+        print("\nLibrary Management System")
+        print("1. Add a Book")
+        print("2. Borrow a Book")
+        print("3. Return a Book")
+        print("4. View Available Books")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            isbn = input("Enter ISBN: ")
+            title = input("Enter title: ")
+            author = input("Enter author: ")
+            year = input("Enter publication year: ")
+
+            try:
+                book = Book(isbn, title, author, int(year))
+                library.add_book(book)
+            except BookExistsError as e:
+                print(e)
+
+        elif choice == '2':
+            isbn = input("Enter ISBN of the book to borrow: ")
+
+            try:
+                library.borrow_book(isbn)
+            except (BookNotFoundError, BookAlreadyBorrowedError) as e:
+                print(e)
+
+        elif choice == '3':
+            isbn = input("Enter ISBN of the book to return: ")
+
+            try:
+                library.return_book(isbn)
+            except (BookNotFoundError, BookNotBorrowedError) as e:
+                print(e)
+
+        elif choice == '4':
+            library.view_available_books()
+
+        elif choice == '5':
+            print("Nice to have you in coding!")
+            break
+
+        else:
+            print("Invalid choice, please try again.")
+
 
 if __name__ == '__main__':
     main()
