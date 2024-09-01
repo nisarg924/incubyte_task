@@ -1,0 +1,10 @@
+Name                     Stmts   Miss  Cover   Missing
+------------------------------------------------------
+book.py                     17      0   100%
+library.py                  73     38    48%   50-100, 104
+test_add_books.py           20      0   100%
+test_available_book.py      27      0   100%
+test_borrow_book.py         23      0   100%
+test_return_book.py         23      0   100%
+------------------------------------------------------
+TOTAL                      183     38    79%
