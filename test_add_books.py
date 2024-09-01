@@ -1,6 +1,7 @@
 import unittest
 
-from library import BookExistsError, Book, Library
+from book import Book
+from library import BookExistsError, Library
 
 
 class TestLibraryManagementSystem(unittest.TestCase):

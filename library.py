@@ -5,7 +5,7 @@ class Library:
     def __init__(self):
         self.books = {}
         
-        def add_book(self, book):
+    def add_book(self, book):
             if book.isbn in self.books:
                 raise BookExistsError(f"Book with ISBN {book.isbn} already exists.")
             self.books[book.isbn] = book
